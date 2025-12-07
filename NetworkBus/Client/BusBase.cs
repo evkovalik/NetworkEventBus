@@ -28,11 +28,12 @@ namespace NetworkBus.Client
             _opened = true;
         }
 
-        public void Close()
+        public void Close(bool removeHandlers=true)
         {
             if(!_opened) return;
 
             _networkTransport.OnReceive -= HandlePacket;
+            if(removeHandlers) _registrar.Clear();
             _opened = false;
         }
 

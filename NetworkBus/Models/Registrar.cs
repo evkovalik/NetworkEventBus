@@ -78,5 +78,11 @@ namespace NetworkBus.Models
             }
             return null;
         }
+
+        public void Clear()
+        {
+            _signalHandlers.Clear();
+            _dtoHandlers.Clear();
+        }
     }
 }
