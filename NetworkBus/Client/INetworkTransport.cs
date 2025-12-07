@@ -1,7 +1,7 @@
 using System;
 using NetworkBus.Models;
 
-namespace NetworkBus.Client.Interfaces
+namespace NetworkBus.Client
 {
     public interface INetworkTransport
     {

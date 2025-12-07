@@ -1,5 +1,4 @@
 using NetworkBus.Models;
-using NetworkBus.Client.Interfaces;
 using Newtonsoft.Json;
 
 namespace NetworkBus.Client

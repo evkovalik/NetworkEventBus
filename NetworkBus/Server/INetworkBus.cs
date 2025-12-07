@@ -1,6 +1,6 @@
 using System;
 
-namespace NetworkBus.Server.Interfaces
+namespace NetworkBus.Server
 {
     public interface INetworkBus
     {

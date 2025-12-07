@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using NetworkBus.Models;
-using NetworkBus.Server.Interfaces;
 using Newtonsoft.Json;
 
 namespace NetworkBus.Server

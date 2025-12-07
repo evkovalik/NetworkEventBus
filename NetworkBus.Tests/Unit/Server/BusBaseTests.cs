@@ -1,7 +1,6 @@
 using Moq;
 using NetworkBus.Models;
 using NetworkBus.Server;
-using NetworkBus.Server.Interfaces;
 
 namespace NetworkBus.Tests.Unit.Server;
 

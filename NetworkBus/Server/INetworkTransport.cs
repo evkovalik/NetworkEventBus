@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using NetworkBus.Models;
 
-namespace NetworkBus.Server.Interfaces
+namespace NetworkBus.Server
 {
     public interface INetworkTransport
     {
