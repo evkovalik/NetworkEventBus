@@ -3,7 +3,7 @@ using NetworkBus.Models;
 
 namespace NetworkBus.Client
 {
-    public interface INetworkTransport
+    public interface IBusTransport
     {
         event Action<Packet> OnReceive;
         void Send(Packet packet);

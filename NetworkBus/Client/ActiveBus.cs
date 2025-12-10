@@ -5,8 +5,8 @@ namespace NetworkBus.Client
 {
     public class ActiveBus : BusBase
     {
-        public ActiveBus(INetworkTransport networkTransport)
-        : base(networkTransport)
+        public ActiveBus(IBusTransport transport)
+        : base(transport)
         {}
 
         public override void Send<T>(T dto) where T : class

@@ -9,8 +9,8 @@ namespace NetworkBus.Server
         private record Client(string Id, List<Packet> Buffer);
         private List<Client> _clients = new(){new Client(string.Empty, new())};
 
-        public PassiveBus(INetworkTransport networkTransport)
-        : base(networkTransport)
+        public PassiveBus(IBusTransport transport)
+        : base(transport)
         {}
 
         public override void AddRecipient(string recipientId)
@@ -44,7 +44,8 @@ namespace NetworkBus.Server
         {
             if(_clients.Count < 2)
             {
-                _clients[0].Buffer.Clear();
+                if(_clients[0].Buffer.Count > 0)
+                    _clients[0].Buffer.Clear();
                 return;
             }
 

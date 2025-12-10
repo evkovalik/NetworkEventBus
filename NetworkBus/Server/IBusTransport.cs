@@ -4,7 +4,7 @@ using NetworkBus.Models;
 
 namespace NetworkBus.Server
 {
-    public interface INetworkTransport
+    public interface IBusTransport
     {
         event Action<string, Packet> OnReceive;
         void Send(string recipientId, Packet packet);

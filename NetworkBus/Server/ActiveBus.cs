@@ -8,8 +8,8 @@ namespace NetworkBus.Server
     {
         private List<string> _clientIds = new();
 
-        public ActiveBus(INetworkTransport networkTransport)
-        : base(networkTransport)
+        public ActiveBus(IBusTransport transport)
+        : base(transport)
         {}
 
         public override void AddRecipient(string recipientId)

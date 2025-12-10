@@ -8,23 +8,23 @@ namespace NetworkBus.Client
     {
         public abstract void Send<T>(T dto) where T : class;
         
-        private INetworkTransport _networkTransport;
+        private IBusTransport _transport;
         private bool _opened = false;
         private Registrar _registrar = new();
 
-        public BusBase(INetworkTransport networkTransport)
+        public BusBase(IBusTransport transport)
         {
-            _networkTransport = networkTransport;
+            _transport = transport;
             Open();
         }
 
-        public INetworkTransport Transport => _networkTransport;
+        public IBusTransport Transport => _transport;
 
         public void Open()
         {
             if(_opened) return;
 
-            _networkTransport.OnReceive += HandlePacket;
+            _transport.OnReceive += HandlePacket;
             _opened = true;
         }
 
@@ -32,15 +32,15 @@ namespace NetworkBus.Client
         {
             if(!_opened) return;
 
-            _networkTransport.OnReceive -= HandlePacket;
+            _transport.OnReceive -= HandlePacket;
             if(removeHandlers) _registrar.Clear();
             _opened = false;
         }
 
-        public void ChangeTransport(INetworkTransport networkTransport)
+        public void ChangeTransport(IBusTransport transport)
         {
             Close();
-            _networkTransport = networkTransport;
+            _transport = transport;
             Open();
         }
 
@@ -50,10 +50,10 @@ namespace NetworkBus.Client
         public void Meet<T>(Action<T> handler) where T : class
             => _registrar.AddHandlerFor<T>(handler);
 
-        public void Forget(string signalName, Delegate handler)
+        public void Forget(string signalName, Action handler)
             => _registrar.RemoveHandlerFor(signalName, handler);
 
-        public void Forget<T>(Delegate handler) where T : class
+        public void Forget<T>(Action<T> handler) where T : class
             => _registrar.RemoveHandlerFor<T>(handler);
 
         public void Send(string signalName) => Send(new Signal(signalName));
