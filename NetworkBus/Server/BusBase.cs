@@ -58,10 +58,10 @@ namespace NetworkBus.Server
         public void Meet<T>(Action<string, T> handler) where T : class
             => _registrar.AddHandlerFor<T>(handler);
 
-        public void Forget(string signalName, Action handler)
+        public void Forget(string signalName, Action<string> handler)
             => _registrar.RemoveHandlerFor(signalName, handler);
 
-        public void Forget<T>(Action<T> handler) where T : class
+        public void Forget<T>(Action<string, T> handler) where T : class
             => _registrar.RemoveHandlerFor<T>(handler);
 
         public void SendTo(string recipientId, string signalName)
